@@ -4,7 +4,7 @@ import HeaderCartButton from "./HeaderCartButton";
 import { Fragment } from "react";
 
 
-const Header=()=>{
+const Header=(props)=>{
 
 
 return(
@@ -18,7 +18,7 @@ return(
             <Nav.Link href="#link">Store</Nav.Link>
             <Nav.Link href="#link">About</Nav.Link>
           </Nav>
-          <HeaderCartButton/>
+          <HeaderCartButton onClick={props.onClick}/>
       </Container>
     </Navbar>
     <Alert className="bg-secondary text-white">
