@@ -1,5 +1,6 @@
 import  React  from "react"
 import { Button, Container, Row } from "react-bootstrap"
+import ProductDisplay from "./ProductDisplay"
 const productsArr = [
 
     {
@@ -46,97 +47,19 @@ const productsArr = [
 
 const ProductList=()=>{
 
+const product=productsArr.map((item,index)=>
+{
+  return(
+  
+  <ProductDisplay 
+  id={index}
+  key={index}
+  title={item.key}
+  price={item.price}
+  imageUrl={item.imageUrl}>
 
-
-
-
-
-const product=productsArr.map((item)=>
-(
-  <div key={productsArr.id}
-  style={{
-    margin: "0 auto",
-    maxWidth: "100%",
-    padding: "20px 30px",
-    display: "flex",
-    justifyContent: "space-around",
-    
-  }}>
-  <div  style={{
-    display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "column"
-  }}>
-    
-<h3 
-
-style={{
-  display: "block",
-  width: "100%",
-  textAlign: "center",
-  fontSize: "24px",
-  marginBottom: "15px",
-}}
->
-{item.title}
-</h3>
-
-
-<div
-       style={{
-        margin: "30px",
-      }}
-      >
-       
-          <img 
-            
-            src={item.imageUrl}
-            style={{
-              transformOrigin: "center",
-              objectFit: "cover",
-              padding: "0px",
-              margin: "0px",
-              transition: "ease-in 0.5s",
-              filter: "brightness(100%)",
-              height: "250px",
-              width: "250px",
-            }}
-            alt={item.title}
-          />
-        
-      </div>
-
-      <div     style={{
-            margin: "30px",
-            alignItems: "center",
-            justifyContent: "space-between",
-            background: "white",
-            width: "80%",
-            display: "flex",
-          }}>
-        <span>
-          ${item.price.toFixed(2)}
-        </span>
-        <Button
-          variant="info"
-          className="btn-sm"
-          style={{
-            cursor: "pointer",
-            padding: "8px",
-            border: "none",
-            fontSize: "15px",
-            fontWeight: "bold",
-            background: "#56ccf2",
-          }}
-        >
-          ADD TO CART
-        </Button>
-      </div>
-      
-      </div>
-      </div>
-)
-)
+  </ProductDisplay>
+)})
 
 return (
   <React.Fragment>

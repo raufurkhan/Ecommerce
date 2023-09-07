@@ -3,6 +3,7 @@ import Header from './Layout/Header';
 import ProductList from './ProductItems/ProductList'
 import Cart from './Cart/Cart';
 import { useState } from 'react';
+import CartProvider from './store/CartProvider';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
   };
 
   return (
+    <CartProvider>
     <div>
     <Header onClick={cartHandler}/>
     <ProductList/>
@@ -50,6 +52,7 @@ function App() {
  {showCart && <Cart />}
 </div>
     </div>
+    </CartProvider>
   );
 }
 

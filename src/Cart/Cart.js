@@ -1,49 +1,18 @@
+import { useContext } from "react";
 import { Button,Container,Table } from "react-bootstrap";
+import CartContext from "../store/cart-context";
 
-const productsArr = [
 
-    {
-    
-    title: 'Colors',
-    
-    price: 100,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-    
-    quantity: 2,
-    
-    },
-    
-    {
-    
-    title: 'Black and white Colors',
-    
-    price: 50,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-    
-    quantity: 3,
-    
-    },
-    
-    {
-    
-    title: 'Yellow and Black Colors',
-    
-    price: 70,
-    
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-    
-    quantity: 1,
-    
-    }
-    
-    ]
+
+
 
 
 
 const Cart = () => {
     
+    const ctx = useContext(CartContext);
+    // console.log(ctx);
+    const productsArr = ctx.items;
 
     let totAmount = 0;
     productsArr.forEach((item) => {
@@ -71,23 +40,24 @@ const Cart = () => {
                                     {item.title}
                                 </td>
                                 <td>${item.price}</td>
-                                <td>1
-                                </td>
-                                <td><button className="btn btn-danger" >REMOVE</button></td>
+                                <td>1</td>
+
+
+                                <td><button className="btn btn-danger" onClick={()=>ctx.removeItem(item.id)}>REMOVE</button></td>
+
                             </tr>
                         ))}
                     </tbody>
                 </Table>
 
             </div>
-            <div className="d-flex justify-content-between">
-                <div>
-                    <h3><strong>Total</strong></h3>
-                </div>
+            <div className="text-right">
+                <strong>Total</strong>
+            </div>
                 <div>
                 <h4><strong>${totAmount}</strong></h4>
                 </div>
-            </div>
+            
 
             {/* Purchase Button */}
             <div className="text-center">
