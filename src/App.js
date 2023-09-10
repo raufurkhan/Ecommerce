@@ -6,6 +6,7 @@ import Cart from './Cart/Cart';
 import { useState } from 'react';
 import CartProvider from './store/CartProvider';
 import About from './Pages/About';
+import Home from './Pages/Home';
 
 function App() {
 
@@ -50,7 +51,7 @@ function App() {
     <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/store" element={<ProductList />} />
-          <Route path="/" element={<ProductList />} />
+          <Route path="/" element={<Home />} />
         </Routes>
 
   <div style={backdropStyle} onClick={closeCart}></div>
