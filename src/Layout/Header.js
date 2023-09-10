@@ -1,11 +1,18 @@
 
 import { Navbar, Nav, Container,Alert } from "react-bootstrap";
 import HeaderCartButton from "./HeaderCartButton";
-import { Fragment } from "react";
+import React from 'react';
 
+import { Link } from 'react-router-dom';
 
 const Header=(props)=>{
 
+
+
+  const linkStyle = {
+    color: 'white',
+    textDecoration: 'none', // Remove underlines from links
+  };
 
 return(
 
@@ -14,9 +21,15 @@ return(
       <Container>
       
           <Nav className="mx-auto">
-            <Nav.Link  href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Store</Nav.Link>
-            <Nav.Link href="#link">About</Nav.Link>
+          <Nav.Link as={Link} to="/" style={linkStyle}>
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to="/store" style={linkStyle}>
+              Store
+            </Nav.Link>
+            <Nav.Link as={Link} to="/about" style={linkStyle}>
+              About
+            </Nav.Link>
           </Nav>
           <HeaderCartButton onClick={props.onClick}/>
       </Container>

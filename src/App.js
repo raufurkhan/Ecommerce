@@ -1,9 +1,11 @@
 import React from 'react';
 import Header from './Layout/Header';
 import ProductList from './ProductItems/ProductList'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Cart from './Cart/Cart';
 import { useState } from 'react';
 import CartProvider from './store/CartProvider';
+import About from './Pages/About';
 
 function App() {
 
@@ -41,10 +43,15 @@ function App() {
   };
 
   return (
+    <Router>
     <CartProvider>
     <div>
     <Header onClick={cartHandler}/>
-    <ProductList/>
+    <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/store" element={<ProductList />} />
+          <Route path="/" element={<ProductList />} />
+        </Routes>
 
   <div style={backdropStyle} onClick={closeCart}></div>
 
@@ -53,6 +60,7 @@ function App() {
 </div>
     </div>
     </CartProvider>
+    </Router>
   );
 }
 
