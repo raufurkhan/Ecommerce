@@ -1,14 +1,14 @@
 import { Button } from "react-bootstrap";
 import { useContext } from "react";
 import CartContext from "../store/cart-context";
-
+import { Link } from "react-router-dom";
 
 
 const ProductDisplay=(props)=>{
 console.log("contet uing file updating")
     const ctx=useContext(CartContext);
     const item={
-        id:props.key,
+        id:props.id,
         title:props.title,
         imageUrl:props.imageUrl,
         price:props.price
@@ -21,7 +21,7 @@ console.log("contet uing file updating")
 return(
 
 
-    <div key={props.key}
+    <div
     style={{
       margin: "0 auto",
       maxWidth: "10%",
@@ -58,7 +58,7 @@ return(
           margin: "30px",
         }}
         >
-         
+         <Link to={`/products/${props.title}`}>
             <img 
               
               src={props.imageUrl}
@@ -74,7 +74,7 @@ return(
               }}
               alt={props.title}
             />
-          
+          </Link>
         </div>
   
         <div     style={{

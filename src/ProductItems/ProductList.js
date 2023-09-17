@@ -54,7 +54,7 @@ const product=productsArr.map((item,index)=>
   <ProductDisplay 
   id={index}
   key={index}
-  title={item.key}
+  title={item.title}
   price={item.price}
   imageUrl={item.imageUrl}>
 

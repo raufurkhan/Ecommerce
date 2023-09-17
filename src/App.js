@@ -1,13 +1,14 @@
 import React from 'react';
 import Header from './Layout/Header';
 import ProductList from './ProductItems/ProductList'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Cart from './Cart/Cart';
 import { useState } from 'react';
 import CartProvider from './store/CartProvider';
 import About from './Pages/About';
 import Home from './Pages/Home';
 import ContactUs from './Pages/ContactForm';
+import ProductDetails from './ProductItems/ProductsDetails';
 
 function App() {
 
@@ -65,12 +66,13 @@ function App() {
     <CartProvider>
     <div>
     <Header onClick={cartHandler}/>
-    <Routes>
-          <Route path="/about" element={<About />} />
-          <Route path="/store" element={<ProductList />} />
-          <Route path="/contact" element={<ContactUs onAddUser={adduserHandler}/>} />
-          <Route path="/" element={<Home />} />
-        </Routes>
+    <Switch>
+          <Route path="/about" ><About/></Route>
+          <Route path="/store" ><ProductList /></Route>
+          <Route path="/contact" ><ContactUs onAddUser={adduserHandler}/></Route>
+          <Route path="/" exact ><Home /></Route>
+          <Route path="/products/:productId" ><ProductDetails/></Route>
+        </Switch>
 
   <div style={backdropStyle} onClick={closeCart}></div>
 
