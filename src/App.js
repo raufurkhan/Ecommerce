@@ -7,6 +7,7 @@ import { useState } from 'react';
 import CartProvider from './store/CartProvider';
 import About from './Pages/About';
 import Home from './Pages/Home';
+import ContactUs from './Pages/ContactForm';
 
 function App() {
 
@@ -43,6 +44,22 @@ function App() {
     zIndex: '998', // Below the cart
   };
 
+  async function adduserHandler(user){
+    const res = await fetch('https://ecommerce-1db71-default-rtdb.firebaseio.com/users.json', {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        //it is not required bvut good practice to aware your backend about data u r sending
+        'Content-Type': 'application/json'
+      }
+    });
+  
+    const data = await res.json();
+    console.log(data);
+  }
+
+
+
   return (
     <Router>
     <CartProvider>
@@ -51,6 +68,7 @@ function App() {
     <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/store" element={<ProductList />} />
+          <Route path="/contact" element={<ContactUs onAddUser={adduserHandler}/>} />
           <Route path="/" element={<Home />} />
         </Routes>
 

@@ -30,6 +30,9 @@ return(
             <Nav.Link as={Link} to="/about" style={linkStyle}>
               About
             </Nav.Link>
+            <Nav.Link as={Link} to="/contact" style={linkStyle}>
+              Contact Us
+            </Nav.Link>
           </Nav>
           <HeaderCartButton onClick={props.onClick}/>
       </Container>
