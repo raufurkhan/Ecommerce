@@ -1,10 +1,10 @@
 
-import { Navbar, Nav, Container,Alert } from "react-bootstrap";
+import { Navbar, Nav, Container,Alert,Button } from "react-bootstrap";
 import HeaderCartButton from "./HeaderCartButton";
 import React from 'react';
 import AuthContext from "../store/auth-context";
 
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import { useContext } from "react";
 
 const Header=(props)=>{
@@ -17,6 +17,21 @@ const Header=(props)=>{
     color: 'white',
     textDecoration: 'none', // Remove underlines from links
   };
+
+  const history=useHistory();
+if(!isLoggedIn){
+  history.replace('/login');
+}
+
+const logoutHandler = () => {
+  ctx.logout();
+  localStorage.removeItem('token');
+  //alert('Log out Succesfull')
+  // Clear user session (e.g., remove tokens, clear local storage)
+  // Redirect to the login page or perform any other necessary actions
+  // Display a logout notification if needed
+};
+
 
 return(
 
@@ -35,9 +50,12 @@ return(
             <Nav.Link as={Link} to="/about" style={linkStyle}>
               About
             </Nav.Link>
+            {!isLoggedIn &&
             <Nav.Link as={Link} to="/login" style={linkStyle}>
               Login
-            </Nav.Link>
+            </Nav.Link>}
+
+            {isLoggedIn && <Button variant='light' onClick={logoutHandler}>Logout</Button>}
           </Nav>
           <HeaderCartButton onClick={props.onClick}/>
       </Container>

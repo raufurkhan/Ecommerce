@@ -1,21 +1,32 @@
 import { Button } from "react-bootstrap";
+
 import { useContext } from "react";
 import CartContext from "../store/cart-context";
 import { Link } from "react-router-dom";
 
 
+
 const ProductDisplay=(props)=>{
 console.log("contet uing file updating")
     const ctx=useContext(CartContext);
+   
+
     const item={
         id:props.id,
         title:props.title,
         imageUrl:props.imageUrl,
-        price:props.price
+        price:props.price,
+        quantity:Number(1)
     }
-    const addToCartHandler = (e) =>{
+
+
+
+  function addToCartHandler(e) {
         e.preventDefault();
         ctx.addItem(item);
+    
+
+  
     }
 
 return(

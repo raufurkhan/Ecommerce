@@ -69,10 +69,10 @@ function App() {
     <Header onClick={cartHandler}/>
     <Switch>
           <Route path="/about" ><About/></Route>
-          <Route path="/login" ><Login/></Route>
+          <Route path="/login" exact ><Login/></Route>
          <Route path="/products" ><ProductList /></Route>
           <Route path="/contact" ><ContactUs onAddUser={adduserHandler}/></Route>
-          <Route path="/home" exact ><Home /></Route>
+          <Route path="/home"><Home /></Route>
          <Route path="/products/:productId" ><ProductDetails/></Route>
         </Switch>
 

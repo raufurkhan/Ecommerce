@@ -16,8 +16,9 @@ const Cart = () => {
 
     let totAmount = 0;
     productsArr.forEach((item) => {
+        console.log(item);
         totAmount += item.price;
-        console.log(item._id);
+        
     })
 
     return (
@@ -40,7 +41,7 @@ const Cart = () => {
                                     {item.title}
                                 </td>
                                 <td>${item.price}</td>
-                                <td>1</td>
+                                <td>{item.quantity}</td>
 
 
                                 <td><button className="btn btn-danger" onClick={()=>ctx.removeItem(item.id)}>REMOVE</button></td>
@@ -51,13 +52,15 @@ const Cart = () => {
                 </Table>
 
             </div>
-            <div className="text-right">
-                <strong>Total</strong>
-            </div>
-                <div>
-                <h4><strong>${totAmount}</strong></h4>
-                </div>
             
+            <div className="d-flex justify-content-between">
+                <div>
+                    <h3><strong>Total</strong></h3>
+                </div>
+                <div>
+                    <h4><strong>${totAmount}</strong></h4>
+                </div>
+            </div>
 
             {/* Purchase Button */}
             <div className="text-center">
