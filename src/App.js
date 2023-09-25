@@ -9,6 +9,7 @@ import About from './Pages/About';
 import Home from './Pages/Home';
 import ContactUs from './Pages/ContactForm';
 import ProductDetails from './ProductItems/ProductsDetails';
+import Login from './Pages/Login';
 
 function App() {
 
@@ -68,10 +69,11 @@ function App() {
     <Header onClick={cartHandler}/>
     <Switch>
           <Route path="/about" ><About/></Route>
-          <Route path="/store" ><ProductList /></Route>
+          <Route path="/login" ><Login/></Route>
+         <Route path="/products" ><ProductList /></Route>
           <Route path="/contact" ><ContactUs onAddUser={adduserHandler}/></Route>
-          <Route path="/" exact ><Home /></Route>
-          <Route path="/products/:productId" ><ProductDetails/></Route>
+          <Route path="/home" exact ><Home /></Route>
+         <Route path="/products/:productId" ><ProductDetails/></Route>
         </Switch>
 
   <div style={backdropStyle} onClick={closeCart}></div>
